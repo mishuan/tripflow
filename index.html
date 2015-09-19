@@ -36,8 +36,23 @@
           </ul>
           <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
-              <div class="travel-head">Travel Plan</div>
-              <a class="addstyle" href="#"><span class="glyphicon glyphicon-plus sidebar-add" aria-hidden="true"></span></a>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="travel-head">Travel Plan</div>
+                  </div>
+                  <div class="col-md-4" style="text-align: right;">
+                    <a class="addstyle" href="#" id="popover" data-placement="left">
+                      <span class="glyphicon glyphicon-plus sidebar-add" aria-hidden="true"></span>
+                    </a>
+                  </div>
+                </div>
+
+              <div id="popover-content" class="hide">
+                <form>
+                  <input type="text" name="search" style="border: none;" placeholder="Add city..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Add city...'">
+                </form>
+              </div>
+
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
@@ -127,6 +142,15 @@
               var x = $(event.target).text();         // active tab
               var y = $(event.relatedTarget).text();  // previous tab
           });
+      });
+      $('#popover').popover({
+        html : true,
+        title: function() {
+          return $("#popover-head").html();
+        },
+        content: function() {
+          return $("#popover-content").html();
+        }
       });
     </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do"></script>
