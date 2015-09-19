@@ -30,21 +30,17 @@ function destinationToCoor(){
 
 }
 
-// returns url if more than 1 destination
+// returns path depending on input
 function urlConstructorTSP(){
-	var url;
 	var coorLen = coordinate.length;
-	if(coorLen > 1){
-		url = "https://maps.googleapis.com/maps/api/directions/json?";
-		url += "origin=" + coordinate[0].lat + "," + coordinate[0].lng
-				+ "&destination=" + coordinate[1].lat + "," + coordinate[1].lng
-				+ "&waypoints=optimize:true";
-		for(var i = 2; i < coordinate.length; i++)
-			url += "|" + coordinate[i].lat + "," + coordinate[i].lng;	
-		url += "&key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do";
-	}
+	// construct a url to server
+	var url = "route/";
 	console.log(url);
 	return url;
+}
+
+function search(){
+	var url = "search/";
 }
 
 function genPath(data){
@@ -53,7 +49,7 @@ function genPath(data){
 
 function TSP(){
 	$.ajax({
-	    url: "http://localhost:1337/" + urlConstructorTSP(),
+	    url: "http://localhost:4567/" + urlConstructorTSP(),
 	    type: 'GET',
 	    dataType: "json",
 	    success: genPath,
