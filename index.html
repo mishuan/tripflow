@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Trip Flow</title>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(44.5403, -78.5463),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="images/brand_icon.png"><span class="brand-one">trip<span class="brand-two">flow</span></a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">Current</a></li>
+          <li><a href="#about">Past Trips</a></li>
+          <li><a href="#">George <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/11695873_1030954810248486_5297927163764748389_n.jpg?oh=dbd3801db48d54c4fb36b2eecb5f87ac&oe=56675D35&__gda__=1453294295_13b2135aba58266d93dfb4e97fb1f455" class="img-circle profile-pic" /></a> </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+  </nav>
+  <div class="main-contain">
+    <div class="row">
+      <div class="sidebar">.col-md-4</div>
+      <div class="map-content">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-menu">
+    
+  </div>
+
+  <!-- Javascript Components -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
