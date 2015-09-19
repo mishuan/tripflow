@@ -98,7 +98,7 @@ body {
   width: 30%;
   background-color:#FFF;
   position: fixed;
-  top: 0;
+  top: 60px;
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -123,4 +123,111 @@ body {
   width: 70%;
   background: #FFF;
   opacity: 0.75;
+}
+
+.nav-tabs {
+  border: none;
+  background: #F9F9F9;
+}
+
+.nav-tabs>li.active>a {
+  background: none;
+  color: #F5634A;
+  border: none;
+  border-bottom: 3px solid #F5634A;
+}
+
+.nav-tabs>li.active {
+  background: #FFF;
+  color: #F5634A;
+  border: none;
+}
+
+.nav-tabs>li.active>a:hover {
+  color: #F5634A;
+  border: none;
+  border-bottom: 3px solid #F5634A;
+}
+
+.nav-tabs>li>a {
+  color: #B1B1B1;
+  font-size: 21px;
+  border: none;
+}
+
+.nav-tabs>li>a:hover {
+  color: #B1B1B1;
+  background: none;
+  border-bottom: 3px solid #FF9C5B;
+}
+
+.nav-tabs>li {
+  text-align: center;
+  width: 100px;
+}
+
+.panel {
+  border: none;
+  box-shadow: none;
+    border-top: 2px solid #FFF;
+}
+
+.panel-title {
+  line-height: 2.5;
+}
+
+.panel-group .panel-heading+.panel-collapse>.panel-body {
+  border: none;
+}
+
+.panel-group .panel+.panel {
+  margin-top: 0px;
+}
+
+.travel-head {
+  color: #3B8183;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 15px;
+  line-height: 50px;
+  display: inline-block;
+}
+
+.sidebar-add {
+  display: inline-block;
+  float: right;
+  font-size: 18px;
+  margin-top: 12px;
+  margin-right: 15px;
+}
+
+.addstyle {
+  color: #B1B1B1;
+}
+
+.addstyle:hover {
+  color: #F5634A;
+}
+
+.panel-group .panel .panel-new {
+  border-radius: 0px;
+  border: 1px solid #BBBBBB;
+}
+
+.panel-new .panel-body  {
+  padding: 0;
+}
+
+.panel-body .row .col-md-8 {
+  padding: 15px;
+  font-size: 16px;
+}
+
+.link-title {
+  color: #3B8183;
+  font-weight: 500;
+}
+
+.link-title:hover {
+  color: #256163;
 }

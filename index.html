@@ -41,7 +41,84 @@
   </nav>
   <div class="main-contain">
     <div class="row">
-      <div class="sidebar">.col-md-4</div>
+        <div class="sidebar">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#home"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a></li>
+            <li><a href="#menu1"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
+            <li><a href="#menu2"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <div class="travel-head">Travel Plan</div>
+              <a class="addstyle" href="#"><span class="glyphicon glyphicon-plus sidebar-add" aria-hidden="true"></span></a>
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Rome, Italy
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      <div class="panel panel-new">
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-md-4"><img src="http://www.livincool.com/wp-content/uploads/2013/01/rome1.png" width="155px" /></div>
+                            <div class="col-md-8">
+                              1. <a href="#" class="link-title">Random Roman Lake Thing</a> <br />
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <br />
+                              "Oh this place is so awesome and blah blah blah."
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Athenes, Greece
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                      Location 2
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        London, UK
+                      </a>
+                    </h4>
+                  </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                      <div class="panel-body">
+                        Location 3
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+              <h3>Menu 2</h3>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <h3>Menu 3</h3>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="map-content">
         <div id="map"></div>
       </div>
@@ -49,11 +126,22 @@
   </div>
 
   <div class="map-menu">
-    
+
   </div>
 
   <!-- Javascript Components -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $(".nav-tabs a").click(function(){
+            $(this).tab('show');
+        });
+        $('.nav-tabs a').on('shown.bs.tab', function(event){
+            var x = $(event.target).text();         // active tab
+            var y = $(event.relatedTarget).text();  // previous tab
+        });
+    });
+  </script>
 </body>
 </html>
