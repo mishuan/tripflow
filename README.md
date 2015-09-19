@@ -23,3 +23,9 @@ gem install sinatra
 gem install httparty
 
 run: ruby server.rb
+
+Current endpoints:
+
+http://localhost:4567/search/:dest 
+example: http://localhost:4567/search/rome
+
