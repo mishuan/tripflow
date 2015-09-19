@@ -117,19 +117,18 @@
   </div>
 
   <!-- Javascript Components -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script>
-    $(document).ready(function(){
-        $(".nav-tabs a").click(function(){
-            $(this).tab('show');
-        });
-        $('.nav-tabs a').on('shown.bs.tab', function(event){
-            var x = $(event.target).text();         // active tab
-            var y = $(event.relatedTarget).text();  // previous tab
-        });
-    });
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $(".nav-tabs a").click(function(){
+              $(this).tab('show');
+          });
+          $('.nav-tabs a').on('shown.bs.tab', function(event){
+              var x = $(event.target).text();         // active tab
+              var y = $(event.relatedTarget).text();  // previous tab
+          });
+      });
+    </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do"></script>
   <script src="js/maps.js"></script>
 </body>
