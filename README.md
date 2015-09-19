@@ -1,18 +1,25 @@
 TripFlow
 
-Server:\n
-brew install rbenv ruby-build\n
+Server:
 
-Add rbenv to bash so that it loads every time you open a terminal:\n
-echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile\n
-source ~/.bash_profile\n
+brew install rbenv ruby-build
 
-Install Ruby:\n
-rbenv install 2.2.3\n
-rbenv global 2.2.3\n
-ruby -v\n
+Add rbenv to bash so that it loads every time you open a terminal:
 
-gem install sinatra\n
-gem install httparty\n
+echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
 
-run: ruby server.rb\n
+source ~/.bash_profile
+
+Install Ruby:
+
+rbenv install 2.2.3
+
+rbenv global 2.2.3
+
+ruby -v
+
+gem install sinatra
+
+gem install httparty
+
+run: ruby server.rb
