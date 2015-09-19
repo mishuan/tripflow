@@ -12,6 +12,13 @@ body {
   padding: 0px;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 .navbar {
   min-height: 60px;
 }
@@ -195,7 +202,6 @@ body {
 
 .sidebar-add {
   display: inline-block;
-  float: right;
   font-size: 18px;
   margin-top: 12px;
   margin-right: 15px;
@@ -205,13 +211,17 @@ body {
   color: #B1B1B1;
 }
 
+a:visited{
+  color: #B1B1B1;
+}
+
 .addstyle:hover {
   color: #F5634A;
 }
 
 .panel-group .panel .panel-new {
   border-radius: 0px;
-  border: 1px solid #BBBBBB;
+  border: 1px solid #E2E2E2;
 }
 
 .panel-new .panel-body  {
@@ -230,4 +240,8 @@ body {
 
 .link-title:hover {
   color: #256163;
+}
+
+.popover {
+  box-shadow: 0 5px 10px #F5F5F5;
 }
