@@ -8,7 +8,14 @@ end
 
 get '/search/:dest' do
 	response = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{params[:dest]}&key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do")
-	destination = { :formatted_address => response[:address_components][:formatted_address]}
-	put destination
-	response.to_json
+	puts response["results"]
+	destinations = []
+	response["results"].each do |result|
+		destinations << { :destination => result["formatted_address"],
+		:place_id => result["place_id"],
+		:lat => result["geometry"]["location"]["lat"],
+		:lng => result["geometry"]["location"]["lng"] }
+	end
+	destinations.to_json
 end
+
