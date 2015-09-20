@@ -4,6 +4,7 @@ require 'httparty'
 require 'sinatra/cross_origin'
 require 'sinatra/reloader'
 require 'byebug'
+require 'yelp'
 
 configure do 
 	enable :cross_origin
@@ -50,6 +51,24 @@ get '/route/tsp_optimize/:coordinates' do
 	totalSteps.to_json
 end
 
-get '/route/generate/:coordinates' do
+get '/yelp/poi/:location/:term' do
 
+	client = Yelp::Client.new({ :consumer_key => "5v4yxqAE93Ggb3r-ti4Ruw",
+	                            :consumer_secret => "5SAX-_UHd1lovUoxsxejeztgtsc",
+	                            :token => "53dV6Kwg3aXBtaR2JV8xicIs8v4yM3hX",
+	                            :token_secret => "pLUl_AGyMpGQQDaD28h8Y64TCPQ"
+	                          })
+	request = {
+		limit: 5,
+		term: params[:term]
+	}
+	response = JSON.parse(client.search(params[:location], request).to_json)
+	poi = []
+	response["businesses"].each do |r|
+		poi << {:rating => r["rating"], :name => r["name"], :image_url => r["image_url"], :coordinates => {:lat => r["location"]["coordinate"]["latitude"], :lng => r["location"]["coordinate"]["longitude"]}}
+	end
+	poi.to_json
 end
+
+
+

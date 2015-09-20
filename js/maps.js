@@ -121,17 +121,17 @@ function normalRoute(){
 	});
 }
 
-function retPOI(data){
-	return data;
-}
+var yelpResult
 
-function searchPOI(dest){
+function yelpSearch(location, term) {
 	$.ajax({
 		headers: {'Access-Control-Allow-Origin': '*'},
-	    url: "http://localhost:4567/search/" + dest,
+	    url: "http://localhost:4567/yelp/poi/" + location + "/" + term,
 	    method: 'GET',
 	    dataType: "json",
-	    success: retPOI
+	    success: function(data) {
+	    	yelpResult = data;
+	    }
 	});
 }
 

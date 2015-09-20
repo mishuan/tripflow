@@ -22,6 +22,10 @@ gem install sinatra
 
 gem install httparty
 
+gem install sinatra-cross_origin
+
+gem install byebug
+
 run: ruby server.rb
 
 Current endpoints:
