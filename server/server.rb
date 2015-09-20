@@ -1,9 +1,20 @@
 require 'sinatra'
 require 'json'
 require 'httparty'
+require 'sinatra/cross_origin'
+require 'sinatra/reloader'
+require 'byebug'
+
+configure do 
+	enable :cross_origin
+end
 
 get '/' do
-	'Hello world!'
+	"hello world"
+end
+
+options '*' do
+	[200, {"Access-Control-Allow-Origin" => '*', "Access-Control-Allow-Methods" => "GET, POST, PUT", "Access-Control-Allow-Headers" => "access-control-allow-origin, accept"}, {}]
 end
 
 get '/search/:dest' do
@@ -19,3 +30,14 @@ get '/search/:dest' do
 	destinations.to_json
 end
 
+get '/route/tsp_optimize/:coordinates' do
+	coordinates = params[:coordinates].split("+")
+	url = 
+	coordinates.each do |coordinate|
+
+	end
+end
+
+get '/route/generate' do
+
+end

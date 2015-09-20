@@ -34,7 +34,10 @@ function destinationToCoor(){
 function urlConstructorTSP(){
 	var coorLen = coordinate.length;
 	// construct a url to server
-	var url = "route/";
+	var url = "route/tsp_optimize/";
+	url += coordinate[0].lat + "," + coordinate[0].lng;
+	for(var i = 1; i < coordinate.length; i++)
+		url += "+" + coordinate[i].lat + "," + coordinate[i].lng;	
 	console.log(url);
 	return url;
 }
@@ -49,11 +52,11 @@ function genPath(data){
 
 function TSP(){
 	$.ajax({
+		headers: {'Access-Control-Allow-Origin': '*'},
 	    url: "http://localhost:4567/" + urlConstructorTSP(),
-	    type: 'GET',
+	    method: 'GET',
 	    dataType: "json",
-	    success: genPath,
-	    error: function(){ alert("failed"); }
+	    success: genPath
 	});
 }
 
