@@ -9,17 +9,12 @@ configure do
 	enable :cross_origin
 end
 
-get '/' do
-	"hello world"
-end
-
 options '*' do
 	[200, {"Access-Control-Allow-Origin" => '*', "Access-Control-Allow-Methods" => "GET, POST, PUT", "Access-Control-Allow-Headers" => "access-control-allow-origin, accept"}, {}]
 end
 
 get '/search/:dest' do
 	response = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{params[:dest]}&key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do")
-	puts response["results"]
 	destinations = []
 	response["results"].each do |result|
 		destinations << { :destination => result["formatted_address"],
@@ -32,12 +27,29 @@ end
 
 get '/route/tsp_optimize/:coordinates' do
 	coordinates = params[:coordinates].split("+")
-	url = 
-	coordinates.each do |coordinate|
-
+	destinations = []
+	pair = coordinates[0].split(",")
+	destinations << pair
+	url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{pair[0]},#{pair[1]}"
+	pair = coordinates[-1].split(",")
+	destinations << pair
+	url += "&destination=#{pair[0]},#{pair[1]}&waypoints=optimize:true"
+	len = coordinates.length - 2
+	(1..len).each do |i|
+		pair = coordinates[i].split(",")
+		url += "|#{pair[0]},#{pair[1]}"
+		destinations << pair
 	end
+	response = HTTParty.get(url)
+	route = response["routes"][0];
+	totalSteps = []
+	route["legs"].each do |leg|
+		totalSteps.concat(leg["steps"])
+	end 
+	puts totalSteps
+	totalSteps.to_json
 end
 
-get '/route/generate' do
+get '/route/generate/:coordinates' do
 
 end
