@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src='js/script.js'></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <title>Trip Flow</title>
 </head>
-<body>
+<body ng-app="tripFlow" ng-controller="TripController">
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-header">
@@ -22,7 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="#">Current</a></li>
           <li><a href="#about">Past Trips</a></li>
-          <li><a href="#">George <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/11695873_1030954810248486_5297927163764748389_n.jpg?oh=dbd3801db48d54c4fb36b2eecb5f87ac&oe=56675D35&__gda__=1453294295_13b2135aba58266d93dfb4e97fb1f455" class="img-circle profile-pic" /></a> </li>
+          <li><a href="#">{{profileName}}<img id="profile-pic" src="{{profilePicURL}}" class="img-circle profile-pic" /></a> </li>
         </ul>
       </div><!--/.nav-collapse -->
   </nav>
@@ -31,7 +35,7 @@
         <div class="sidebar">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#home"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a></li>
-            <li><a href="#menu1"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
+            <li><a href="#menu1"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></a></li>
             <li><a href="#menu2"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a></li>
           </ul>
           <div class="tab-content">
@@ -100,20 +104,37 @@
                     </div>
                   </div>
                 </div>
-                <!--div class="panel panel-default">
+                <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
                       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Athenes, Greece
+                        Facebook Events
                       </a>
                     </h4>
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                      Location 2
+                      <div class="panel panel-new" ng-repeat="event in events">
+                        <div class="panel-body">
+                          <div class="row">
+                            <input
+                              type="checkbox"
+                              name="selectedEvents[]"
+                              value="{{event}}"
+                              ng-checked="selection.indexOf(event) > -1"
+                              ng-click="toggleSelection(event)">
+                            <div class="col-md-4"><img src="images/event_icon.png" width="155px" /></div>
+                            <div class="col-md-8">
+                              <a href="#" class="link-title">{{event.name}}</a> <br />
+                              {{event.description | limitTo:115}}
+                              <a href="#" class="add-pin-fb" id="loc"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div-->
+                </div>
                 <!--div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
@@ -131,7 +152,32 @@
               </div>
             </div>
             <div id="menu1" class="tab-pane fade">
-              <h3>Menu 2</h3>
+              <div class="travel-head">Saved Trips</div>
+              <br />
+              <div class="row saved-trip">
+                <div class="col-md-8" style="padding: 10px;">
+                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
+                </div>
+                <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
+              </div>
+              <div class="row saved-trip">
+                <div class="col-md-8" style="padding: 10px;">
+                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
+                </div>
+                <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
+              </div>
+              <div class="row saved-trip">
+                <div class="col-md-8" style="padding: 10px;">
+                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
+                </div>
+                <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
+              </div>
+              <div class="row saved-trip">
+                <div class="col-md-8" style="padding: 10px;">
+                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
+                </div>
+                <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
+              </div>
             </div>
             <div id="menu2" class="tab-pane fade">
               <h3>Menu 3</h3>
@@ -150,7 +196,7 @@
   </div>
 
   <!-- Javascript Components -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function(){
           $(".nav-tabs a").click(function(){
@@ -170,13 +216,13 @@
           return $("#popover-content").html();
         }
       });
-      $( "#loc-123" ).click(function() {
+      $( ".add-pin" ).click(function() {
         $("<div></div>").appendTo("#timeline").hide().append("<img id='tl-123' src='http://www.livincool.com/wp-content/uploads/2013/01/rome1.png' height='100px' style='float: left;' />").fadeIn('slow');
         $("#loc-123").hide();
       });
-      $( "#loc-234" ).click(function() {
-        $("<div></div>").appendTo("#timeline").hide().append("<img id='tl-234' src='https://ryanbolton.files.wordpress.com/2013/06/cn-tower-6.jpg' height='100px' style='float: left;' />").fadeIn('slow');
-        $("#loc-234").hide();
+      $( ".add-pin-fb" ).click(function() {
+        $("<div></div>").appendTo("#timeline").hide().append("<img id='tl-123' src='https://cdn2.iconfinder.com/data/icons/flat-ui-free/200/calendar.png' height='100px' style='float: left;' />").fadeIn('slow');
+        $("#loc-123").hide();
       });
     </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do"></script>

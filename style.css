@@ -28,7 +28,7 @@ button:focus {
   font-size: 21px;
 }
 
-.navbar-brand .brand-one {
+.brand-one {
   font-family: 'Cabin', sans-serif;
   font-weight: 500;
 }
@@ -40,7 +40,7 @@ button:focus {
   margin-left: 15px;
 }
 
-.navbar-brand .brand-two {
+.brand-two {
   font-family: 'Courgette', cursive;
 }
 
@@ -264,4 +264,91 @@ a:visited{
 
 .add-pin:hover {
   color: #F5634A;
+}
+
+.add-pin-fb {
+  color: #CACACA;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}
+
+.add-pin-fb:visited {
+  color: #CACACA;
+}
+
+.add-pin-fb:hover {
+  color: #F5634A;
+}
+
+#collapseTwo {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* Login Styling */
+.jumbo {
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?q=80&fm=jpg&s=f9871beffe0d05c626a91cb5dce35a81');
+  background-size: 1800px;
+  text-align: center;
+  padding-top: 80px;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.jumbo h1 {
+  margin-top: 0;
+  font-size: 40px;
+  color: #FFF;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.icon-bg {
+  background: #F36450;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  padding-top: 50px;
+  border-radius: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+.login-content {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.saved-trip {
+  margin: 0;
+  width: 100%;
+  height: 70px;
+  background: #f5f5f5;
+  border-bottom: 2px solid #FFF;
+}
+
+.view-trip {
+  background: #FF9C5B;
+  height: 100%;
+  color: #FFF;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 21px;
+}
+
+.view-trip:hover {
+  background: #F5634A;
 }

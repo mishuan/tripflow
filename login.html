@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src='js/script.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Tripflow - Login</title>
+</head>
+<body ng-app="tripFlow" ng-controller="TripController">
+
+<div class="jumbo">
+  <div class="login-content">
+    <div class="icon-bg"><img src="images/brand_icon.png" width="250px" /></div><br />
+    <span class="brand-one" style="color: #FFF; font-size: 60px; margin-top: 55px; display: block;">trip<span class="brand-two">flow</span></span>
+    <h1>Discover more when traveling.</h1>
+    <button type="button" class="btn btn-primary btn-lg" style="margin-top: 25px;">Sign in with Facebook</button>
+    <fb:login-button scope="public_profile,email,user_events,user_friends" onlogin="checkLoginState();"></fb:login-button>
+  </div>
+</div>
+
+  <!-- Javascript Components -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+ </html>
