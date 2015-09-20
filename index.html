@@ -49,7 +49,7 @@
 
               <div id="popover-content" class="hide">
                 <form>
-                  <input type="text" name="search" style="border: none;" placeholder="Add city..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Add city...'">
+                  <input type="text" name="search" style="border: none;" placeholder="Add city..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Add city...'" />
                 </form>
               </div>
 
@@ -58,12 +58,13 @@
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                       <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Rome, Italy
+                        Toronto, Canada
                       </a>
                     </h4>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
+                      <input type="text" name="search-poi" placeholder="Search POI..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search POI...'" style="width: 100%; margin-bottom: 10px; height: 50px; font-size: 18px; padding: 10px;" />
                       <div class="panel panel-new">
                         <div class="panel-body">
                           <div class="row">
@@ -75,6 +76,23 @@
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <br />
                               "Oh this place is so awesome and blah blah blah."
+                              <a href="#" class="add-pin" id="loc-123"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-new">
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-md-4"><img src="https://ryanbolton.files.wordpress.com/2013/06/cn-tower-6.jpg" width="155px" /></div>
+                            <div class="col-md-8">
+                              1. <a href="#" class="link-title">CN Tower</a> <br />
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                              <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <br />
+                              "Awesome free standing towering over the rest of the city."
+                              <a href="#" class="add-pin" id="loc-234"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
                             </div>
                           </div>
                         </div>
@@ -82,7 +100,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="panel panel-default">
+                <!--div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
                       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -95,8 +113,8 @@
                       Location 2
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
+                </div-->
+                <!--div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -109,7 +127,7 @@
                         Location 3
                       </div>
                     </div>
-                </div>
+                </div-->
               </div>
             </div>
             <div id="menu1" class="tab-pane fade">
@@ -127,7 +145,7 @@
     </div>
   </div>
 
-  <div class="map-menu">
+  <div class="map-menu" id="timeline">
 
   </div>
 
@@ -152,8 +170,16 @@
           return $("#popover-content").html();
         }
       });
+      $( "#loc-123" ).click(function() {
+        $("<div></div>").appendTo("#timeline").hide().append("<img id='tl-123' src='http://www.livincool.com/wp-content/uploads/2013/01/rome1.png' height='100px' style='float: left;' />").fadeIn('slow');
+        $("#loc-123").hide();
+      });
+      $( "#loc-234" ).click(function() {
+        $("<div></div>").appendTo("#timeline").hide().append("<img id='tl-234' src='https://ryanbolton.files.wordpress.com/2013/06/cn-tower-6.jpg' height='100px' style='float: left;' />").fadeIn('slow');
+        $("#loc-234").hide();
+      });
     </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiGE9sjCg4FtpySvRyMHSDroAN6Ysh5Do"></script>
   <script src="js/maps.js"></script>
 </body>
-</html>
+ </html>

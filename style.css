@@ -219,6 +219,10 @@ a:visited{
   color: #F5634A;
 }
 
+.panel-new {
+  margin-bottom: 10px !important;
+}
+
 .panel-group .panel .panel-new {
   border-radius: 0px;
   border: 1px solid #E2E2E2;
@@ -226,6 +230,7 @@ a:visited{
 
 .panel-new .panel-body  {
   padding: 0;
+  position: relative;
 }
 
 .panel-body .row .col-md-8 {
@@ -244,4 +249,19 @@ a:visited{
 
 .popover {
   box-shadow: 0 5px 10px #F5F5F5;
+}
+
+.add-pin {
+  color: #CACACA;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}
+
+.add-pin:visited {
+  color: #CACACA;
+}
+
+.add-pin:hover {
+  color: #F5634A;
 }
