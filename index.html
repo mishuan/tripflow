@@ -24,8 +24,7 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Current</a></li>
-          <li><a href="#about">Past Trips</a></li>
+          <li class="active"><a href="#">Trip Planner</a></li>
           <li><a href="#">{{profileName}}<img id="profile-pic" src="{{profilePicURL}}" class="img-circle profile-pic" /></a> </li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -36,7 +35,8 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#home"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a></li>
             <li><a href="#menu1"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></a></li>
-            <li><a href="#menu2"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a></li>
+            <!--li><a href="#menu2"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a></li-->
+            <button class="btn btn-primary btn-sm" style="border: none; margin: 11px 15px 0 0; float: right;" ng-click="loginFb()">Login to Facebook</button>
           </ul>
           <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
@@ -51,18 +51,19 @@
                   </div>
                 </div>
 
-              <div id="popover-content" class="hide">
-                <form>
-                  <input type="text" name="search" style="border: none;" placeholder="Add city..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Add city...'" />
-                </form>
-              </div>
+                <div id="popover-content" class="hide">
+                    <form onsubmit="addCity(); return false;">
+                      <input type="text" id="cityInput" style="border: none;" placeholder="Add city..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Add city...'" />
+                      <input type="submit" style="position: absolute; left: -9999px" name="submit" />
+                    <form>
+                </div>
 
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                       <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Toronto, Canada
+                        <span id="cityName"></span>
                       </a>
                     </h4>
                   </div>
@@ -74,13 +75,12 @@
                           <div class="row">
                             <div class="col-md-4"><img src="http://www.livincool.com/wp-content/uploads/2013/01/rome1.png" width="155px" /></div>
                             <div class="col-md-8">
-                              1. <a href="#" class="link-title">Random Roman Lake Thing</a> <br />
+                              1. <a href="#" class="link-title">Town Central Lake</a> <br />
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <br />
-                              "Oh this place is so awesome and blah blah blah."
-                              <a href="#" class="add-pin" id="loc-123"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
+                              "A beautiful and scenic location for a romantic city getaway."
                             </div>
                           </div>
                         </div>
@@ -96,7 +96,6 @@
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <br />
                               "Awesome free standing towering over the rest of the city."
-                              <a href="#" class="add-pin" id="loc-234"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
                             </div>
                           </div>
                         </div>
@@ -127,7 +126,6 @@
                             <div class="col-md-8">
                               <a href="#" class="link-title">{{event.name}}</a> <br />
                               {{event.description | limitTo:115}}
-                              <a href="#" class="add-pin-fb" id="loc"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
                             </div>
                           </div>
                         </div>
@@ -158,23 +156,18 @@
                 <div class="col-md-8" style="padding: 10px;">
                   Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
                 </div>
-                <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
+                <a href="#" onclick="setData(new Array({lat: 43.079379, lng: -79.078847},{lat: 43.059252,lng: -79.072990},{lat: 43.082467,lng:-79.081051}), true);">
+                  <div class="col-md-4 view-trip">View Trip</div></a>
               </div>
               <div class="row saved-trip">
                 <div class="col-md-8" style="padding: 10px;">
-                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
+                  Waterloo, On | July 20th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
                 </div>
                 <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
               </div>
               <div class="row saved-trip">
                 <div class="col-md-8" style="padding: 10px;">
-                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
-                </div>
-                <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
-              </div>
-              <div class="row saved-trip">
-                <div class="col-md-8" style="padding: 10px;">
-                  Niagara Falls, On | July 18th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
+                  Montreal, On | September 9th, 2015 <br /><span style="color: #B1B1B1;">Saved Trip</span>
                 </div>
                 <a href="#"><div class="col-md-4 view-trip">View Trip</div></a>
               </div>
@@ -191,9 +184,9 @@
     </div>
   </div>
 
-  <div class="map-menu" id="timeline">
+  <!--div class="map-menu" id="timeline">
 
-  </div>
+  </div-->
 
   <!-- Javascript Components -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

@@ -352,3 +352,21 @@ a:visited{
 .view-trip:hover {
   background: #F5634A;
 }
+
+#accordion {
+  display: none;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:20px;
+    height:20px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #F5634A;
+	  float: right;
+	  margin-right: 20px;
+}
+input[type='checkbox']:checked {
+    background: #F5634A;
+}

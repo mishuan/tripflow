@@ -35,7 +35,7 @@ function addMarkers(){
 	for(var i = 0; i < coordinate.length; i++){
 		bounds.extend(new google.maps.LatLng(coordinate[i].lat, coordinate[i].lng));
 		var marker = new google.maps.Marker({
-			position: coordinate[i],
+			position: {lat:coordinate[i].lat, lng:coordinate[i].lng},
 			map: map
 		});
 		marker.setMap(map);
@@ -138,7 +138,9 @@ function yelpSearch(location, term) {
 function setData(data, optimize){
 	coordinate = data;
 	addMarkers();
-	calcRoute(optimize);
+  if (data.length > 1) {
+	  calcRoute(optimize);
+  }
 }
 
 
